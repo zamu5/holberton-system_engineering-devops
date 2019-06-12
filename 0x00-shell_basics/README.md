@@ -1,0 +1,1 @@
+The fisrt project of this repository will explain the basic concepts of how to use the shell, also the popular commands that are used.
