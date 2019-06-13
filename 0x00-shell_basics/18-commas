@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -amp ; echo -e "\n"
+ls -amp ; echo -en "\n"
