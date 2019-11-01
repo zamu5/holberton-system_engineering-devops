@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # displays the content of the file
-while file= read -r i
+while IFS=: read -r i
 do
     echo "$i" | cut -d':' -f1,3,6
 done < "/etc/passwd"
