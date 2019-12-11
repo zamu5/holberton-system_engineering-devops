@@ -21,7 +21,7 @@ Host *
 #   ForwardX11Trusted yes
 #   RhostsRSAAuthentication no
 #   RSAAuthentication yes
-    PasswordAuthentication no
+#   PasswordAuthentication yes
 #   HostbasedAuthentication no
 #   GSSAPIAuthentication no
 #   GSSAPIDelegateCredentials no
@@ -31,10 +31,12 @@ Host *
 #   CheckHostIP yes
 #   AddressFamily any
 #   ConnectTimeout 0
-#   StrictHostKeyChecking ask
+StrictHostKeyChecking ask
 #   IdentityFile ~/.ssh/identity
 #   IdentityFile ~/.ssh/id_rsa
 #   IdentityFile ~/.ssh/id_dsa
+#   IdentityFile ~/.ssh/id_ecdsa
+#   IdentityFile ~/.ssh/id_ed25519
 #   Port 22
 #   Protocol 2
 #   Cipher 3des
@@ -51,3 +53,15 @@ Host *
     HashKnownHosts yes
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials no
+#
+# Google Compute Engine times out connections after 10 minutes of inactivity.
+# Keep alive ssh connections by sending a packet every 2 minutes.
+ServerAliveInterval 120
+
+ServerAliveInterval 120
+IdentityFile ~/.ssh/holberton
+        SendEnv LANG LC_*
+            HashKnownHosts yes
+                GSSAPIAuthentication yes
+                    GSSAPIDelegateCredentials no
+                        PasswordAuthentication no
