@@ -4,7 +4,7 @@ apt-get -y update
 apt-get -y install nginx
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/404_error.html
-new_string="listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/github.com\/zamu5;\\n\\t}"
+new_string="listen 80 default_server;\\n\\tadd_header X-Served-By $HOSTNAME;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/github.com\/zamu5;\\n\\t}"
 sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-available/default
 new_string="error_page 404 \/404_error.html;\\n\\tlocation = \/404_error.html {\\n\\t\\troot \/var\/www\/html;\\n\\t\\tinternal;\\n\\t}"
 sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-available/default
