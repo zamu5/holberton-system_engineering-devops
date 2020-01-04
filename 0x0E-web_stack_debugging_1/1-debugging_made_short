@@ -2,4 +2,4 @@
 # make a shorter script
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx start
-echo "echo ' *' nginx is not running" > /etc/init.d/nginx
+rm /run/nginx.pid
