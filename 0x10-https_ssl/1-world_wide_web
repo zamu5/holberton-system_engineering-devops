@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+dig_fun() {
+    res=$(dig $1 | grep -A1 "ANSWER SECTION:" | tail -1)
+}
+
+if [ $# -eq 2 ];then
+    dig_fun "$2.$1"
+    echo "$res $2" | awk '{print "The subdomain " $6 " is a " $4 " record and points to " $5}'
+
+else
+    subdomains="www lb-01 web-01 web-02"
+    for sub in $subdomains;do
+	dig_fun "$sub.$1"
+	echo "$res $sub" | awk '{print "The subdomain " $6 " is a " $4 " record and points to " $5}'
+	done
+
+fi
