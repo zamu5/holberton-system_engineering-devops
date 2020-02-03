@@ -14,7 +14,7 @@ if __name__ == "__main__":
     task_count = 0
     for task in json_res:
         task_count += 1
-        if task.get("completed") == True:
+        if task.get("completed") is True:
             tasks = tasks + "\t " + task.get("title") + "\n"
             task_done += 1
     req = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
