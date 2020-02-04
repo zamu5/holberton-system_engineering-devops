@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Returns information about his/her TODO list progress.
+"""create a cvs file with the data"""
 
 import requests
 import sys
