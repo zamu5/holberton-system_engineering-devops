@@ -9,13 +9,12 @@ if __name__ == "__main__":
         sys.argv[1])
     req = requests.get(url)
     json_res = req.json()
-    tasks = ""
+    tasks = []
     task_done = 0
-    task_count = 0
+    task_count = len(json_res)
     for task in json_res:
-        task_count += 1
         if task.get("completed") is True:
-            tasks = tasks + "\t " + task.get("title") + "\n"
+            tasks.append("\t " + task.get("title"))
             task_done += 1
     req = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
         sys.argv[1]))
@@ -23,4 +22,5 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{})".format(json_res.get("name"),
                                                          task_done,
                                                          task_count))
-    print(tasks[:-1])
+    for row in tasks:
+        print(row)
