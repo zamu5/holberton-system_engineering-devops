@@ -31,4 +31,5 @@ def count_words(subreddit, counter, after=None):
         values_sort = sorted(counter.items(), key=operator.itemgetter(1),
                              reverse=True)
         for value in enumerate(values_sort):
-            print("{}: {}".format(value[1][0], counter[value[1][0]]))
+            if counter[value[1][0]] != 0:
+                print("{}: {}".format(value[1][0], counter[value[1][0]]))
